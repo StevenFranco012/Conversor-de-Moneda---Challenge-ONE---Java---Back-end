@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
+import com.stevenfranco.conversor.modelos.Moneda;
+import com.stevenfranco.conversor.modelos.Temperatura;
+import com.stevenfranco.conversor.modelos.Kilometraje;
+import com.stevenfranco.conversor.modelos.AnosLuz;
+
 public class Conversor {
     public static void main(String[] args) {
         try {
@@ -25,19 +30,68 @@ public class Conversor {
             }
 
             if (seleccion.equals(opciones[0])) {
-                ArrayList<OpcionMoneda> opcionesMoneda = new ArrayList<>();
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Pesos Colombianos a Dólar", 1 / 3939.25, "Dólares"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Pesos Colombianos a Euros", 1 / 4219.74, "Euros"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Pesos Colombianos a Libras", 0.00021, "Libras"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Pesos Colombianos a Yen", 0.040, "Yen"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Pesos Colombianos a Won", 0.34998, "Won"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Dólar a Pesos Colombianos", 3939.25, "Pesos Colombianos"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Euros a Pesos Colombianos", 4219.74, "Pesos Colombianos"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Libras a Pesos Colombianos", 1 / 0.00021, "Pesos Colombianos"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Yen a Pesos Colombianos", 1 / 0.040, "Pesos Colombianos"));
-                opcionesMoneda.add(new OpcionMoneda("Convertir de Won a Pesos Colombianos", 1 / 0.34998, "Pesos Colombianos"));
+                ArrayList<Moneda> opcionesMoneda = new ArrayList<>();
+                Moneda opcion1 = new Moneda();
+                opcion1.setDescripcion("Convertir de Pesos Colombianos a Dólar");
+                opcion1.setTasaDeCambio(1 / 3939.25);
+                opcion1.setNombreMoneda("Dólares");
+                opcionesMoneda.add(opcion1);
 
-                OpcionMoneda seleccionMoneda = (OpcionMoneda) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Moneda",
+                Moneda opcion2 = new Moneda();
+                opcion2.setDescripcion("Convertir de Pesos Colombianos a Euros");
+                opcion2.setTasaDeCambio(1 / 4219.74);
+                opcion2.setNombreMoneda("Euros");
+                opcionesMoneda.add(opcion2);
+
+                Moneda opcion3 = new Moneda();
+                opcion3.setDescripcion("Convertir de Pesos Colombianos a Libras");
+                opcion3.setTasaDeCambio(0.00021);
+                opcion3.setNombreMoneda("Libras");
+                opcionesMoneda.add(opcion3);
+
+                Moneda opcion4 = new Moneda();
+                opcion4.setDescripcion("Convertir de Pesos Colombianos a Yen");
+                opcion4.setTasaDeCambio(0.040);
+                opcion4.setNombreMoneda("Yen");
+                opcionesMoneda.add(opcion4);
+
+                Moneda opcion5 = new Moneda();
+                opcion5.setDescripcion("Convertir de Pesos Colombianos a Won");
+                opcion5.setTasaDeCambio(0.34998);
+                opcion5.setNombreMoneda("Won");
+                opcionesMoneda.add(opcion5);
+
+                Moneda opcion6 = new Moneda();
+                opcion6.setDescripcion("Convertir de Dólar a Pesos Colombianos");
+                opcion6.setTasaDeCambio(3939.25);
+                opcion6.setNombreMoneda("Pesos Colombianos");
+                opcionesMoneda.add(opcion6);
+
+                Moneda opcion7 = new Moneda();
+                opcion7.setDescripcion("Convertir de Euros a Pesos Colombianos");
+                opcion7.setTasaDeCambio(4219.74);
+                opcion7.setNombreMoneda("Pesos Colombianos");
+                opcionesMoneda.add(opcion7);
+
+                Moneda opcion8 = new Moneda();
+                opcion8.setDescripcion("Convertir de Libras a Pesos Colombianos");
+                opcion8.setTasaDeCambio(1 / 0.00021);
+                opcion8.setNombreMoneda("Pesos Colombianos");
+                opcionesMoneda.add(opcion8);
+
+                Moneda opcion9 = new Moneda();
+                opcion9.setDescripcion("Convertir de Yen a Pesos Colombianos");
+                opcion9.setTasaDeCambio(1 / 0.040);
+                opcion9.setNombreMoneda("Pesos Colombianos");
+                opcionesMoneda.add(opcion9);
+
+                Moneda opcion10 = new Moneda();
+                opcion10.setDescripcion("Convertir de Won a Pesos Colombianos");
+                opcion10.setTasaDeCambio(1 / 0.34998);
+                opcion10.setNombreMoneda("Pesos Colombianos");
+                opcionesMoneda.add(opcion10);
+
+                Moneda seleccionMoneda = (Moneda) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Moneda",
                         JOptionPane.QUESTION_MESSAGE, null, opcionesMoneda.toArray(), opcionesMoneda.get(0));
 
                 if (seleccionMoneda == null) {
@@ -64,13 +118,33 @@ public class Conversor {
 
                 // Aquí va el código para el conversor de moneda, utilizando el valor ingresado y la selección de moneda
             } else if (seleccion.equals(opciones[1])) {
-                ArrayList<OpcionTemperatura> opcionesTemperatura = new ArrayList<>();
-                opcionesTemperatura.add(new OpcionTemperatura("Convertir de Celsius a Fahrenheit", "Fahrenheit", 9.0 / 5.0));
-                opcionesTemperatura.add(new OpcionTemperatura("Convertir de Fahrenheit a Celsius", "Celsius", 5.0 / 9.0));
-                opcionesTemperatura.add(new OpcionTemperatura("Convertir de Celsius a Kelvin", "Kelvin", 1));
-                opcionesTemperatura.add(new OpcionTemperatura("Convertir de Kelvin a Celsius", "Celsius", 1));
+                ArrayList<Temperatura> opcionesTemperatura = new ArrayList<>();
 
-                OpcionTemperatura seleccionTemperatura = (OpcionTemperatura) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Temperatura",
+                Temperatura opcion1 = new Temperatura();
+                opcion1.setDescripcion("Convertir de Celsius a Fahrenheit");
+                opcion1.setTasaDeCambio(9.0 / 5.0);
+                opcion1.setUnidadTemperatura("Fahrenheit");
+                opcionesTemperatura.add(opcion1);
+
+                Temperatura opcion2 = new Temperatura();
+                opcion2.setDescripcion("Convertir de Fahrenheit a Celsius");
+                opcion2.setTasaDeCambio(5.0 / 9.0);
+                opcion2.setUnidadTemperatura("Celsius");
+                opcionesTemperatura.add(opcion2);
+
+                Temperatura opcion3 = new Temperatura();
+                opcion3.setDescripcion("Convertir de Celsius a Kelvin");
+                opcion3.setTasaDeCambio(1);
+                opcion3.setUnidadTemperatura("Kelvin");
+                opcionesTemperatura.add(opcion3);
+
+                Temperatura opcion4 = new Temperatura();
+                opcion4.setDescripcion("Convertir de Kelvin a Celsius");
+                opcion4.setTasaDeCambio(1);
+                opcion4.setUnidadTemperatura("Celsius");
+                opcionesTemperatura.add(opcion4);
+
+                Temperatura seleccionTemperatura = (Temperatura) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Temperatura",
                         JOptionPane.QUESTION_MESSAGE, null, opcionesTemperatura.toArray(), opcionesTemperatura.get(0));
 
                 if (seleccionTemperatura == null) {
@@ -94,11 +168,21 @@ public class Conversor {
 
                 JOptionPane.showMessageDialog(null, "El valor convertido es: " + valorConvertido + " " + seleccionTemperatura.getUnidadTemperatura());
             } else if (seleccion.equals(opciones[2])) {
-                ArrayList<OpcionKilometraje> opcionesKilometraje = new ArrayList<>();
-                opcionesKilometraje.add(new OpcionKilometraje("Convertir de Kilometros a Millas", 0.621371, "Millas"));
-                opcionesKilometraje.add(new OpcionKilometraje("Convertir de Millas a Kilometros", 1.60934, "Kilometros"));
+                ArrayList<Kilometraje> opcionesKilometraje = new ArrayList<>();
 
-                OpcionKilometraje seleccionKilometraje = (OpcionKilometraje) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Kilometraje",
+                Kilometraje opcion1 = new Kilometraje();
+                opcion1.setDescripcion("Convertir de Kilometros a Millas");
+                opcion1.setTasaDeCambio(0.621371);
+                opcion1.setUnidadMedida("Millas");
+                opcionesKilometraje.add(opcion1);
+
+                Kilometraje opcion2 = new Kilometraje();
+                opcion2.setDescripcion("Convertir de Millas a Kilometros");
+                opcion2.setTasaDeCambio(1.60934);
+                opcion2.setUnidadMedida("Kilometros");
+                opcionesKilometraje.add(opcion2);
+
+                Kilometraje seleccionKilometraje = (Kilometraje) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Kilometraje",
                         JOptionPane.QUESTION_MESSAGE, null, opcionesKilometraje.toArray(), opcionesKilometraje.get(0));
 
                 if (seleccionKilometraje == null) {
@@ -122,11 +206,21 @@ public class Conversor {
 
                 JOptionPane.showMessageDialog(null, "El valor convertido es: " + valorConvertido + " " + seleccionKilometraje.getUnidadMedida());
             } else if (seleccion.equals(opciones[3])) {
-                ArrayList<OpcionAnosLuz> opcionesAnosLuz = new ArrayList<>();
-                opcionesAnosLuz.add(new OpcionAnosLuz("Convertir de Años luz a Kilometros", 9.461e+12, "Kilometros"));
-                opcionesAnosLuz.add(new OpcionAnosLuz("Convertir de Kilometros a Años luz", 1.057e-13, "Años luz"));
+                ArrayList<AnosLuz> opcionesAnosLuz = new ArrayList<>();
 
-                OpcionAnosLuz seleccionAnosLuz = (OpcionAnosLuz) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Años luz",
+                AnosLuz opcion1 = new AnosLuz();
+                opcion1.setDescripcion("Convertir de Años luz a Kilometros");
+                opcion1.setTasaDeCambio(9.461e+12);
+                opcion1.setUnidadMedida("Kilometros");
+                opcionesAnosLuz.add(opcion1);
+
+                AnosLuz opcion2 = new AnosLuz();
+                opcion2.setDescripcion("Convertir de Kilometros a Años luz");
+                opcion2.setTasaDeCambio(1.057e-13);
+                opcion2.setUnidadMedida("Años luz");
+                opcionesAnosLuz.add(opcion2);
+
+                AnosLuz seleccionAnosLuz = (AnosLuz) JOptionPane.showInputDialog(null, "Seleccione una opción", "Conversor de Años luz",
                         JOptionPane.QUESTION_MESSAGE, null, opcionesAnosLuz.toArray(), opcionesAnosLuz.get(0));
 
                 if (seleccionAnosLuz == null) {
@@ -173,130 +267,5 @@ public class Conversor {
                 System.exit(0);
             }
         }
-    }
-}
-
-class OpcionMoneda {
-    private String descripcion;
-    private double tasaDeCambio;
-    private String nombreMoneda;
-
-    public OpcionMoneda(String descripcion, double tasaDeCambio, String nombreMoneda) {
-        this.descripcion = descripcion;
-        this.tasaDeCambio = tasaDeCambio;
-        this.nombreMoneda = nombreMoneda;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getTasaDeCambio() {
-        return tasaDeCambio;
-    }
-
-    public String getNombreMoneda() {
-        return nombreMoneda;
-    }
-
-    // Sobreescribimos el método toString para que al mostrar el objeto en el JOptionPane, se muestre la descripción
-    @Override
-    public String toString() {
-        return descripcion;
-    }
-}
-
-class OpcionTemperatura {
-    private String descripcion;
-    private String unidadTemperatura;
-    private double tasaDeCambio;
-
-    public OpcionTemperatura(String descripcion, String unidadTemperatura, double tasaDeCambio) {
-        this.descripcion = descripcion;
-        this.unidadTemperatura = unidadTemperatura;
-        this.tasaDeCambio = tasaDeCambio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public String getUnidadTemperatura() {
-        return unidadTemperatura;
-    }
-
-    public double convertir(double valor) {
-        return valor * tasaDeCambio;
-    }
-
-    @Override
-    public String toString() {
-        return descripcion;
-    }
-}
-
-class OpcionKilometraje {
-    private String descripcion;
-    private double tasaDeCambio;
-    private String unidadMedida;
-
-    public OpcionKilometraje(String descripcion, double tasaDeCambio, String unidadMedida) {
-        this.descripcion = descripcion;
-        this.tasaDeCambio = tasaDeCambio;
-        this.unidadMedida = unidadMedida;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getTasaDeCambio() {
-        return tasaDeCambio;
-    }
-
-    public String getUnidadMedida() {
-        return unidadMedida;
-    }
-
-    public double convertir(double valor) {
-        return valor * tasaDeCambio;
-    }
-
-    @Override
-    public String toString() {
-        return descripcion;
-    }
-}
-
-class OpcionAnosLuz {
-    private String descripcion;
-    private double tasaDeCambio;
-    private String unidadMedida;
-
-    public OpcionAnosLuz(String descripcion, double tasaDeCambio, String unidadMedida) {
-        this.descripcion = descripcion;
-        this.tasaDeCambio = tasaDeCambio;
-        this.unidadMedida = unidadMedida;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getTasaDeCambio() {
-        return tasaDeCambio;
-    }
-
-    public String getUnidadMedida() {
-        return unidadMedida;
-    }
-
-    public double convertir(double valor) {
-        return valor * tasaDeCambio;
-    }
-
-    @Override
-    public String toString() {
-        return descripcion;
     }
 }
